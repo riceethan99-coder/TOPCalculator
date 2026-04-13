@@ -36,6 +36,7 @@ let digitBtn = document.querySelectorAll(".digitBtn")
 let displayText = document.querySelector(".display")
 let operatorBtn = document.querySelectorAll(".operatorBtn")
 let equalBtn = document.querySelector(".equalBtn")
+let clearBtn = document.querySelector(".clearBtn")
 
 
 digitBtn.forEach(button => {
@@ -54,11 +55,35 @@ digitBtn.forEach(button => {
 
 operatorBtn.forEach(button => {
     button.addEventListener("click", function(event){
+        if(num2 !== "") {
+           let result = operate(Number(num1), Number(num2), operator)
+           displayText.textContent = result
+           num2 = ""
+           num1 = result
+           operator = event.target.textContent
+        } else {
         operator = event.target.textContent
+        }
     })
 })
 
 equalBtn.addEventListener("click", function() {
+    if(num1 !== "" && num2 !== "" && operator !== ""){
     let result = operate(Number(num1), Number(num2), operator)
     displayText.textContent = result 
+    num1 = result
+    num2 = ""
+    operator = ""
+    } else {
+        displayText.textContent = "Please enter two numbers & operator"
+        num1 = ""
+        operator = ""
+    }
+})
+
+clearBtn.addEventListener("click", function() {
+    num1 = ""
+    num2 = ""
+    operator = ""
+    displayText.textContent = "00"
 })
