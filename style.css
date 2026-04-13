@@ -1,31 +1,31 @@
-#displayContainer {
+#container {
  display: flex;
  flex-direction: column;
  justify-content: center;
- align-content: center;
+ align-items: center;
 }
 
 .display {
-    width: 300px; 
-    height: 100px;
-    box-sizing: border-box;
-    background-color: lightgray;
-    border-radius: 10px;
-    text-align: center;
-    padding: 25px;
+width: 300px; 
+height: 100px;
+box-sizing: border-box;
+background-color: lightgray;
+border-radius: 10px;
+text-align: center;
+padding: 25px;
 }
 
-#buttonContainer {
-    display: flex;
-    width: 300px;
-    flex-wrap: wrap;
+#buttonsContainer {
+display: flex;
+width: 300px;
+flex-wrap: wrap;
  
 }
 
 button {
-    width: 75px;
-    height: 45px;
-    border-radius: 10px;
-    box-sizing: border-box;
+width: 75px;
+height: 45px;
+border-radius: 10px;
+box-sizing: border-box;
     
 }
