@@ -43,6 +43,7 @@ let operatorBtn = document.querySelectorAll(".operatorBtn")
 let equalBtn = document.querySelector(".equalBtn")
 let clearBtn = document.querySelector(".clearBtn")
 let decBtn = document.querySelector(".decimalBtn")
+let bckBtn = document.querySelector(".bckBtn")
 
 
 digitBtn.forEach(button => {
@@ -132,17 +133,15 @@ decBtn.addEventListener("click", function(event) {
         }
     }})
 
-
-/* decBtn.addEventListener("click", function(event) {
-    if(num1.includes(".") || num2.includes(".")) {
-        displayText.textContent
-    } else {
-        if(operator === "" || num1 === "") {
-        num1 = num1 + event.target.textContent
+bckBtn.addEventListener("click", function(event) {
+    if(operator === "" || num1 === "") {
+        num1 = num1.slice(0, -1)
         displayText.textContent = num1
     } else {
-        num2 = num2 + event.target.textContent
+        num2 = num2.slice(0, -1)
         displayText.textContent = num2
     }
-    } 
-}) */ 
+})
+
+
+
