@@ -90,11 +90,17 @@ equalBtn.addEventListener("click", function() {
         operator = ""
         displayText.textContent = result
     }   else {
-    justCalc = true
-    displayText.textContent = result.toFixed(2)
-    num1 = result
-    num2 = ""
-    operator = "" }
+     if(Number.isInteger(result)) {
+        displayText.textContent = result
+      } else {
+        displayText.textContent = result.toFixed(2)
+        }
+        justCalc = true
+        num1 = result
+        num2 = ""
+        operator = ""
+    }
+
     } else {
         displayText.textContent = "Please enter two numbers & operator"
         num1 = ""
