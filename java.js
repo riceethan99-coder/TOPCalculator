@@ -1,6 +1,7 @@
 let num1 = ""   
 let num2 = ""
 let operator = ""
+let justCalc = false
 
 function add(num1, num2) {
     return num1 + num2
@@ -45,10 +46,17 @@ let clearBtn = document.querySelector(".clearBtn")
 
 digitBtn.forEach(button => {
     button.addEventListener("click", function(event) {
-        if(num1 === "" || operator === "") {
+        if(justCalc === true) {
+            num1= ""
+            num1 = num1 + event.target.textContent        
+            displayText.textContent = num1
+            justCalc = false
+        }
+        else if(num1 === "" || operator === "") {
         num1 = num1 + event.target.textContent 
         displayText.textContent = num1
-        } else {
+        }
+        else {
             num2 = num2 + event.target.textContent
             displayText.textContent = num2
         }
@@ -65,13 +73,16 @@ operatorBtn.forEach(button => {
            num2 = ""
            num1 = result
            operator = event.target.textContent
+           justCalc = false
         } else {
         operator = event.target.textContent
+        justCalc = false
         }
     })
 })
 
 equalBtn.addEventListener("click", function() {
+    justCalc = true
     if(num1 !== "" && num2 !== "" && operator !== ""){
     let result = operate(Number(num1), Number(num2), operator)
     displayText.textContent = result
@@ -95,4 +106,5 @@ clearBtn.addEventListener("click", function() {
     num2 = ""
     operator = ""
     displayText.textContent = "00"
+    justCalc = false
 })
