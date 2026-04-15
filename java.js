@@ -73,7 +73,7 @@ operatorBtn.forEach(button => {
            let result = operate(Number(num1), Number(num2), operator)
            displayText.textContent = result
            num2 = ""
-           num1 = result
+           num1 = String(result)
            operator = event.target.textContent
            justCalc = false
         } else {
@@ -98,7 +98,7 @@ equalBtn.addEventListener("click", function() {
         displayText.textContent = result.toFixed(2)
         }
         justCalc = true
-        num1 = result
+        num1 = String(result)
         num2 = ""
         operator = ""
     }
@@ -145,6 +145,8 @@ bckBtn.addEventListener("click", function(event) {
 
 let digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 document.addEventListener("keydown", function(event) {
+    const handledKeys = [...digits, "+", "-", "*", "/", "=", "Enter", ".", "Backspace", "x"]
+    if(handledKeys.includes(event.key)) event.preventDefault()
     if(digits.includes(event.key)) {
     if(justCalc === true) {
         num1 = ""
@@ -164,7 +166,7 @@ document.addEventListener("keydown", function(event) {
            let result = operate(Number(num1), Number(num2), operator)
            displayText.textContent = result
            num2 = ""
-           num1 = result
+           num1 = String(result)
            operator = event.key
            justCalc = false
         } else {
@@ -188,7 +190,7 @@ document.addEventListener("keydown", function(event) {
         displayText.textContent = result.toFixed(2)
         }
         justCalc = true
-        num1 = result
+        num1 = String(result)
         num2 = ""
         operator = ""
     }
