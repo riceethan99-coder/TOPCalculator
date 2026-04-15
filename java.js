@@ -102,7 +102,6 @@ equalBtn.addEventListener("click", function() {
         num2 = ""
         operator = ""
     }
-
     } else {
         displayText.textContent = "Please enter two numbers & operator"
         num1 = ""
@@ -144,4 +143,101 @@ bckBtn.addEventListener("click", function(event) {
 })
 
 
+let digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+document.addEventListener("keydown", function(event) {
+    if(digits.includes(event.key)) {
+    if(justCalc === true) {
+        num1 = ""
+        num1 = num1 + event.key
+        displayText.textContent = num1
+        justCalc = false
+    } else if(operator === "") {
+        num1 = num1 + event.key
+        displayText.textContent = num1
+    } else {
+        num2 = num2 + event.key
+        displayText.textContent = num2
+    }
+    } else if(event.key === "+" || event.key === "-" || event.key === "/" || event.key === "*") {
+        console.log("num1:", num1, "num2:", num2, "operator:", operator)
+        if(num2 !== "") {
+           let result = operate(Number(num1), Number(num2), operator)
+           displayText.textContent = result
+           num2 = ""
+           num1 = result
+           operator = event.key
+           justCalc = false
+        } else {
+        operator = event.key
+        justCalc = false
+        }
+    } else if(event.key === "=" || event.key === "Enter") {
+        console.log("equals pressed - num1:", num1, "num2:", num2, "operator:", operator)
+        if(num1 !== "" && num2 !== "" && operator !== ""){
+    let result = operate(Number(num1), Number(num2), operator)
+    console.log(typeof result)
+    if(result === "HEHEHE Cheeky!!!") {
+        num1 = ""
+        num2 = ""
+        operator = ""
+        displayText.textContent = result
+    }   else {
+     if(Number.isInteger(result)) {
+        displayText.textContent = result
+      } else {
+        displayText.textContent = result.toFixed(2)
+        }
+        justCalc = true
+        num1 = result
+        num2 = ""
+        operator = ""
+    }
+    } else {
+        displayText.textContent = "Please enter two numbers & operator"
+        num1 = ""
+        operator = ""
+    }
+    } else if(event.key === "x" || event.key === "Backspace") {
+        if(operator === "" || num1 === "") {
+        num1 = num1.slice(0, -1)
+        displayText.textContent = num1
+    } else {
+        num2 = num2.slice(0, -1)
+        displayText.textContent = num2
+    }
+    }
+     else if(event.key === ".") {
+    if(operator === "" || num1 === "") {
+        if(!num1.includes(".")) {
+            num1 = num1 + event.key
+            displayText.textContent = num1
+        } else {
+            displayText.textContent
+        }} else {
+        if(!num2.includes(".")) {
+            num2 = num2 + event.key
+            displayText.textContent = num2
+        }
+    }}})
+    
+    
 
+
+/* let digits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+document.addEventListener("keydown", function(event) {
+    if(num1 === "" || operator === "") {
+        if(digits.includes(event.key)) {
+            num1 = num1 + event.key
+            displayText.textContent = num1
+        } else {
+            // do nothing
+        }} else {
+            if(digits.includes(event.key)) {
+                num2 = num2 + event.key
+                displayText.textContent = num2
+            } else {
+                // do  nothing
+            }
+        }
+})
+*/ 
