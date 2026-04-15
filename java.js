@@ -15,18 +15,22 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if(num2 === 0) {
+        return "HEHEHE Cheeky!!!" 
+    } else {
     return num1 / num2
+}
 }
 
 function operate(num1, num2, operator) {
     if(operator === "+") {
-        return num1 + num2
+        return add(num1, num2)
     } else if(operator === "-") {
-        return num1 - num2
+        return subtract(num1, num2)
     } else if(operator === "*") {
-        return num1 * num2
+        return multiply(num1, num2)
     } else if(operator === "/") {
-        return num1 / num2
+        return divide(num1, num2)
     } else {
         return "Invalid operator"
     }
@@ -70,10 +74,15 @@ operatorBtn.forEach(button => {
 equalBtn.addEventListener("click", function() {
     if(num1 !== "" && num2 !== "" && operator !== ""){
     let result = operate(Number(num1), Number(num2), operator)
-    displayText.textContent = result 
+    displayText.textContent = result
+    if(result === "HEHEHE Cheeky!!!") {
+        num1 = ""
+        num2 = ""
+        operator = ""
+    }   else {
     num1 = result
     num2 = ""
-    operator = ""
+    operator = "" }
     } else {
         displayText.textContent = "Please enter two numbers & operator"
         num1 = ""
