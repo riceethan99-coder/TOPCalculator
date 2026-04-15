@@ -42,6 +42,7 @@ let displayText = document.querySelector(".display")
 let operatorBtn = document.querySelectorAll(".operatorBtn")
 let equalBtn = document.querySelector(".equalBtn")
 let clearBtn = document.querySelector(".clearBtn")
+let decBtn = document.querySelector(".decimalBtn")
 
 
 digitBtn.forEach(button => {
@@ -115,3 +116,33 @@ clearBtn.addEventListener("click", function() {
     displayText.textContent = "00"
     justCalc = false
 })
+
+
+decBtn.addEventListener("click", function(event) {
+    if(operator === "" || num1 === "") {
+        if(!num1.includes(".")) {
+            num1 = num1 + event.target.textContent
+            displayText.textContent = num1
+        } else {
+            displayText.textContent
+        }} else {
+        if(!num2.includes(".")) {
+            num2 = num2 + event.target.textContent
+            displayText.textContent = num2
+        }
+    }})
+
+
+/* decBtn.addEventListener("click", function(event) {
+    if(num1.includes(".") || num2.includes(".")) {
+        displayText.textContent
+    } else {
+        if(operator === "" || num1 === "") {
+        num1 = num1 + event.target.textContent
+        displayText.textContent = num1
+    } else {
+        num2 = num2 + event.target.textContent
+        displayText.textContent = num2
+    }
+    } 
+}) */ 
