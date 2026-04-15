@@ -82,15 +82,16 @@ operatorBtn.forEach(button => {
 })
 
 equalBtn.addEventListener("click", function() {
-    justCalc = true
     if(num1 !== "" && num2 !== "" && operator !== ""){
     let result = operate(Number(num1), Number(num2), operator)
-    displayText.textContent = result
     if(result === "HEHEHE Cheeky!!!") {
         num1 = ""
         num2 = ""
         operator = ""
+        displayText.textContent = result
     }   else {
+    justCalc = true
+    displayText.textContent = result.toFixed(2)
     num1 = result
     num2 = ""
     operator = "" }
