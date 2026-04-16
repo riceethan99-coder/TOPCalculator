@@ -1,24 +1,35 @@
+body { 
+min-height: 100vh;
+align-content: center;
+}
+
 #container {
  display: flex;
  flex-direction: column;
- justify-content: center;
  align-items: center;
+ justify-self: center;
 }
 
 .display {
-width: 300px; 
+width: 250px; 
 height: 100px;
 box-sizing: border-box;
 background-color: lightgray;
 border-radius: 10px;
 text-align: center;
-padding: 40px;
+padding: 20px 20px;
+margin: 10px;
+text-align: right;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+align-content: flex-end;
+
 }
 
 #buttonsContainer {
 display: flex;
 width: 300px;
 flex-wrap: wrap;
+justify-content: center;
  
 }
 
@@ -27,5 +38,19 @@ width: 75px;
 height: 45px;
 border-radius: 10px;
 box-sizing: border-box;
-    
+margin: 5px;
+
+}
+
+.equalBtn, .bckBtn, .clearBtn { 
+ background-color: orange;   
+}
+
+.operatorBtn {
+background-color: white;
+}
+
+.decimalBtn {
+    background-color: darkgrey;
+    font-weight: 1000;
 }
